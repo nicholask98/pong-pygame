@@ -11,20 +11,24 @@ from pygame.locals import (
 )
 
 class Paddle:
-    def __init__():
+    def __init__(self):
         pass
+
+    def draw(self):
+        pygame.draw.rect(screen, (0, 0, 0), (self.x, self.y, 20, 70))
 
 
 class Player(Paddle):
-    def __init__():
-        pass
+    def __init__(self):
+        Paddle.__init__(self)
+        self.x = 30
+        self.y = 30
+
 
 
 class Opponent(Paddle):
-    def __init__():
+    def __init__(self):
         pass
-
-
 
 
 SCREEN_WIDTH = 1024
@@ -33,6 +37,7 @@ SCREEN_HEIGHT = 768
 pygame.init()
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+player = Player()
 
 done = False
 
@@ -44,13 +49,13 @@ while not done:
     screen.fill((255, 255, 255))
 
     pressed = pygame.key.get_pressed()
+
     for key in pressed:
-        if key == K_UP
+        if key == pygame.locals.K_UP:
+            player.y -= 5
+        if key == pygame.locals.K_DOWN:
+            player.y += 5
 
-
-
-
-
-
+    player.draw()
 
     pygame.display.update()
