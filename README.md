@@ -3,4 +3,4 @@
 My first self-directed game.
 
 * recent update:
-now you can move up and down
+top and bottom collision detection

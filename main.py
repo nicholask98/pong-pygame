@@ -12,10 +12,10 @@ from pygame.locals import (
 
 class Paddle:
     def __init__(self):
-        pass
+        self.height = 70
 
     def draw(self):
-        pygame.draw.rect(screen, (0, 0, 0), (self.x, self.y, 20, 70))
+        pygame.draw.rect(screen, (0, 0, 0), (self.x, self.y, 20, self.height))
 
 
 class Player(Paddle):
@@ -41,6 +41,8 @@ player = Player()
 
 done = False
 
+vel = 5
+
 while not done:
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -50,10 +52,17 @@ while not done:
 
     pressed = pygame.key.get_pressed()
 
+    # Player Controls
     if pressed[K_UP]:
-        player.y -= 5
+        player.y -= vel
     if pressed[K_DOWN]:
-        player.y += 5
+        player.y += vel
+
+    if player.y >= SCREEN_HEIGHT - player.height:
+        player.y = SCREEN_HEIGHT - player.height
+    elif player.y <= 0:
+        player.y = 0
+
     player.draw()
 
     pygame.display.update()
