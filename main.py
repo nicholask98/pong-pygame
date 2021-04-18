@@ -50,12 +50,10 @@ while not done:
 
     pressed = pygame.key.get_pressed()
 
-    for key in pressed:
-        if key == pygame.locals.K_UP:
-            player.y -= 5
-        if key == pygame.locals.K_DOWN:
-            player.y += 5
-
+    if pressed[K_UP]:
+        player.y -= 5
+    if pressed[K_DOWN]:
+        player.y += 5
     player.draw()
 
     pygame.display.update()
