@@ -3,4 +3,4 @@
 My first self-directed game.
 
 * recent update:
-top and bottom collision detection
+Some work done on creating and moving the ball. 
