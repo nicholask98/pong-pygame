@@ -49,8 +49,10 @@ class Ball:
             if self.y <= 0:
                 self.hori_wall = 'TOP'
                 self.y = 0
-            if self.vert_wall == 'LEFT':
-                pass
+            if self.vert_wall == 'RIGHT':
+                if self.x <= 0:
+                    self.vert_wall = 'LEFT'
+                    self. = 0
             elif self.vert_wall == 'RIGHT':
                 pass
         elif self.hori_wall == 'TOP':
