@@ -36,33 +36,35 @@ class Ball:
         self.size = 15
         self.x = SCREEN_WIDTH/2 - self.size
         self.y = SCREEN_HEIGHT/2 - self.size
-        self.vert_wall = 'BOTTOM'
-        self.hori_wall = 'RIGHT'
+        self.last_paddle = 'RIGHT'
+        self.last_wall = 'BOTTOM'
 
     def draw(self, screen):
         pygame.draw.rect(screen, (0, 0, 0), (self.x, self.y, self.size, self.size))
 
 
-    # FIXME: finish get last walls method first. Then use it to complete Ball Movement Method
-    def get_last_walls(self):
-        if self.hori_wall == 'BOTTOM':
+    # FIXME: finish get last collisions method first. Then use it to complete Ball Movement Method
+    def get_last_collisions(self, SCREEN_WIDTH, SCREEN_HEIGHT):
+        if self.last_wall == 'BOTTOM':
             if self.y <= 0:
-                self.hori_wall = 'TOP'
+                self.last_wall = 'TOP'
                 self.y = 0
-            if self.vert_wall == 'RIGHT':
+            if self.last_paddle == 'RIGHT':
                 if self.x <= 0:
-                    self.vert_wall = 'LEFT'
-                    self. = 0
-            elif self.vert_wall == 'RIGHT':
+                    self.last_paddle = 'LEFT'
+                    self.x = 0
+            elif self.last_paddle == 'LEFT':
+                if self.x >= SCREEN_WIDTH:
+                    self.last_paddle = 'LEFT'
+                    self.x = SCREEN_WIDTH - self.size
+        elif self.last_wall == 'TOP':
+            if self.last_paddle == 'LEFT':
                 pass
-        elif self.hori_wall == 'TOP':
-            if self.vert_wall == 'LEFT':
-                pass
-            elif self.vert_wall == 'RIGHT':
+            elif self.last_paddle == 'RIGHT':
                 pass
 
     # FIXME: Ball Movement section
-    # FIXME: Write code that uses get_last_walls to send ball in the intended diagonal direction.
+    # FIXME: Write code that uses get_last_collisions to send ball in the intended diagonal direction.
     def move(self):
         pass
 
